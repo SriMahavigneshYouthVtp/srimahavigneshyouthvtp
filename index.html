@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SriMahavignesh Youth Association | Vinayaka Chavithi & Navaratri Mahotsavam</title>
+  <meta name="description" content="Official website of SriMahavignesh Youth Association - Vinayaka Chavithi Navarathri Mahotsavam Karyakram. View donations (Chandas), expenses, day-by-day activities and photo gallery." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --saffron: #FF9933;
+      --deep-saffron: #E67E22;
+      --maroon: #8B0000;
+      --gold: #FFD700;
+      --cream: #FFF8E7;
+      --dark: #2C1810;
+      --green: #1B5E20;
+      --light-gold: #FFF3CD;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2C1810 0%, #4A1C00 40%, #1a0a00 100%);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Decorative background pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 153, 51, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 100vh;
+      background: linear-gradient(180deg, #3D1A00 0%, #1A0A00 100%);
+      border-right: 3px solid var(--gold);
+      z-index: 1000;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+      box-shadow: 5px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .sidebar-header {
+      padding: 25px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--saffron);
+      background: rgba(255, 153, 51, 0.1);
+    }
+
+    .sidebar-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      color: var(--gold);
+      line-height: 1.3;
+      margin-bottom: 5px;
+    }
+
+    .sidebar-header p {
+      font-size: 0.75rem;
+      color: var(--saffron);
+      opacity: 0.9;
+    }
+
+    .nav-menu {
+      padding: 15px 0;
+    }
+
+    .nav-item {
+      margin: 4px 12px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background: linear-gradient(90deg, var(--saffron), var(--deep-saffron));
+      color: #1a0a00;
+      border-color: var(--gold);
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(255, 153, 51, 0.4);
+    }
+
+    .nav-link .icon {
+      font-size: 1.3rem;
+      width: 28px;
+      text-align: center;
+    }
+
+    /* Dropdown */
+    .dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      background: rgba(0,0,0,0.25);
+      border-radius: 0 0 10px 10px;
+      margin: 0 12px;
+    }
+
+    .dropdown.open {
+      max-height: 300px;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 11px 20px 11px 50px;
+      color: #ffd9a0;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .dropdown a:hover {
+      background: rgba(255, 153, 51, 0.2);
+      color: var(--gold);
+      padding-left: 55px;
+    }
+
+    /* Mobile toggle */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 1100;
+      background: var(--saffron);
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 280px;
+      padding: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 60px 40px;
+      scroll-margin-top: 20px;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: 
+        linear-gradient(rgba(20, 8, 0, 0.75), rgba(20, 8, 0, 0.85)),
+        url('https://images.unsplash.com/photo-1567591414240-e9e1de5a6289?w=1600&q=80') center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(transparent, #1a0a00);
+    }
+
+    .ganesha-img {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
+      animation: float 4s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--gold);
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: var(--saffron);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .hero .tagline {
+      font-size: 1rem;
+      color: #ffd9a0;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    .om {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+
+    /* Cards & sections common */
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '✦';
+      display: block;
+      color: var(--saffron);
+      font-size: 1.2rem;
+      margin-top: 8px;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: #ffd9a0;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(60, 25, 0, 0.9), rgba(30, 12, 0, 0.95));
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(255, 153, 51, 0.2);
+      border-color: var(--saffron);
+    }
+
+    /* About grid */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-card {
+      text-align: center;
+    }
+
+    .about-card .icon {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+
+    .about-card h3 {
+      color: var(--saffron);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .about-card p {
+      color: #e0c9a0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Schedule */
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(var(--saffron), var(--gold));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 80px;
+      margin-bottom: 35px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 18px;
+      top: 5px;
+      width: 28px;
+      height: 28px;
+      background: var(--saffron);
+      border: 4px solid var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(255, 153, 51, 0.6);
+    }
+
+    .timeline-content {
+      background: rgba(60, 25, 0, 0.85);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      border-radius: 12px;
+      padding: 20px 25px;
+    }
+
+    .timeline-content h4 {
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-size: 1.15rem;
+    }
+
+    .timeline-content .day {
+      color: var(--saffron);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .timeline-content p {
+      color: #e0c9a0;
+      font-size: 0.95rem;
+    }
+
+    /* Tables */
+    .table-wrapper {
+      overflow-x: auto;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(40, 15, 0, 0.9);
+    }
+
+    th {
+      background: linear-gradient(90deg, var(--maroon), #5c0000);
+      color: var(--gold);
+      padding: 16px 18px;
+      text-align: left;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255, 153, 51, 0.15);
+      color: #ffe8c0;
+      font-size: 0.95rem;
+    }
+
+    tr:hover td {
+      background: rgba(255, 153, 51, 0.1);
+    }
+
+    .amount {
+      color: #7CFC00;
+      font-weight: 600;
+    }
+
+    .total-row {
+      background: rgba(255, 153, 51, 0.15);
+      font-weight: 700;
+    }
+
+    .total-row td {
+      color: var(--gold);
+      border-top: 2px solid var(--saffron);
+    }
+
+    /* QR Section */
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      max-width: 900px;
+      margin: 40px auto 0;
+      text-align: center;
+    }
+
+    .qr-card {
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 16px;
+      padding: 25px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .qr-card img {
+      width: 160px;
+      height: 160px;
+      margin-bottom: 12px;
+    }
+
+    .qr-card h4 {
+      color: var(--maroon);
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .qr-card p {
+      color: #555;
+      font-size: 0.85rem;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      border-color: var(--gold);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-item .download-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: var(--saffron);
+      color: #1a0a00;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .gallery-item:hover .download-btn {
+      opacity: 1;
+    }
+
+    .placeholder-img {
+      background: linear-gradient(135deg, #5c2a00, #3d1a00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 3rem;
+      height: 100%;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .contact-card .phone {
+      font-size: 1.3rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin: 10px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-card a {
+      color: var(--saffron);
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: #0d0500;
+      padding: 30px 40px;
+      text-align: center;
+      border-top: 2px solid var(--saffron);
+      margin-left: 280px;
+    }
+
+    footer p {
+      color: #c9a06a;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    footer .org {
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .main, footer {
+        margin-left: 0;
+      }
+      section {
+        padding: 50px 20px;
+      }
+      .timeline::before {
+        left: 15px;
+      }
+      .timeline-item {
+        padding-left: 55px;
+      }
+      .timeline-dot {
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Menu Toggle -->
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>SriMahavignesh<br>Youth Association</h2>
+      <p>Vinayaka Chavithi & Navaratri<br>Mahotsavam Karyakram</p>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-item">
+        <a class="nav-link active" href="#home" onclick="setActive(this)">
+          <span class="icon">🏠</span> Home
+        </a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#about" onclick="setActive(this)">
+          <span class="icon">🙏</span> About Us
+        </a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#schedule" onclick="toggleDropdown(event, 'schedule-drop')">
+          <span class="icon">📅</span> Day-by-Day Activities ▾
+        </a>
+        <div class="dropdown" id="schedule-drop">
+          <a href="#schedule">Full Schedule</a>
+          <a href="#schedule">Puja Timings</a>
+          <a href="#schedule">Special Events</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#chandas" onclick="setActive(this)">
+          <span class="icon">💰</span> Chandas (Donations)
+        </a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#expenses" onclick="setActive(this)">
+          <span class="icon">📋</span> Expenses List
+        </a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#gallery" onclick="setActive(this)">
+          <span class="icon">📸</span> Photo Gallery
+        </a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#qr" onclick="setActive(this)">
+          <span class="icon">📱</span> QR Codes
+        </a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#contact" onclick="setActive(this)">
+          <span class="icon">📞</span> Contact
+        </a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- HOME / HERO -->
+    <section class="hero" id="home">
+      <div class="om">ॐ</div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Lord_Ganesha.png/500px-Lord_Ganesha.png" 
+           alt="Lord Ganesha" class="ganesha-img" 
+           onerror="this.src='https://images.unsplash.com/photo-1567591414240-e9e1de5a6289?w=400&q=80'; this.style.borderRadius='50%';">
+      <h1>SriMahavignesh Youth Association</h1>
+      <p class="subtitle">Vinayaka Chavithi & Navaratri Mahotsavam Karyakram</p>
+      <p class="tagline">
+        With the divine blessings of Lord Ganesha, we welcome you to our sacred celebrations. 
+        Join us in devotion, seva and community service.
+      </p>
+      <p style="color: var(--gold); font-size: 1.1rem; margin-top: 10px;">
+        🪔 May Lord Vighnaharta remove all obstacles 🪔
+      </p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About the Mahotsavam</h2>
+      <p class="section-desc">
+        SriMahavignesh Youth Association organises the annual Vinayaka Chavithi and Navaratri Mahotsavam 
+        with pure devotion. This platform maintains transparency of Chandas (collected funds), expenses 
+        and shares the joy of celebrations through photos and day-wise activities.
+      </p>
+      <div class="about-grid">
+        <div class="card about-card">
+          <div class="icon">🙏</div>
+          <h3>Devotion & Seva</h3>
+          <p>Daily pujas, abhishekams, bhajans and special alankarams for Lord Ganesha and Goddess Durga.</p>
+        </div>
+        <div class="card about-card">
+          <div class="icon">🤝</div>
+          <h3>Community Unity</h3>
+          <p>Youth and elders come together for cultural programmes, annadanam and social service activities.</p>
+        </div>
+        <div class="card about-card">
+          <div class="icon">📊</div>
+          <h3>Full Transparency</h3>
+          <p>Every rupee of Chandas and every expense is recorded and displayed publicly for complete accountability.</p>
+        </div>
+        <div class="card about-card">
+          <div class="icon">📷</div>
+          <h3>Memories Forever</h3>
+          <p>Download high-quality photos of all activities by scanning the QR codes or visiting the gallery.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule">
+      <h2 class="section-title">Day-by-Day Activities</h2>
+      <p class="section-desc">Complete schedule of Vinayaka Chavithi & Navaratri celebrations. Timings may vary slightly – please check with organisers.</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="day">Day 1 – Vinayaka Chavithi</div>
+            <h4>Ganesh Sthapana & Maha Puja</h4>
+            <p>Morning: Ganesh idol installation, Kalasha Sthapana, Maha Abhishekam. Evening: Special Alankaram, Bhajans & Aarti.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="day">Day 2 – 4</div>
+            <h4>Daily Pujas & Cultural Programmes</h4>
+            <p>Morning & Evening Abhishekam, Sahasranama Archana, Youth cultural events, Bhajan Sandhya and Annadanam.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="day">Navaratri Days</div>
+            <h4>Devi Alankaram & Special Homams</h4>
+            <p>Daily different Alankarams of Goddess, Kumari Puja, Chandi Homam on special days, Garba & Dandiya evenings.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="day">Final Day</div>
+            <h4>Ganesh Visarjan & Maha Aarti</h4>
+            <p>Grand procession, Visarjan of Lord Ganesha with full devotion, concluding Maha Aarti and prasadam distribution.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHANDAS / DONATIONS -->
+    <section id="chandas">
+      <h2 class="section-title">Chandas – Donations List</h2>
+      <p class="section-desc">
+        Heartfelt gratitude to all devotees who contributed. This list is updated regularly. 
+        Scan the QR code below to view the latest list anytime.
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Devotee Name</th>
+              <th>Amount (₹)</th>
+              <th>Date</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Sample Devotee 1</td>
+              <td class="amount">₹ 5,001</td>
+              <td>12-Sep-2026</td>
+              <td>Ganesh Alankaram</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Sample Devotee 2</td>
+              <td class="amount">₹ 2,501</td>
+              <td>13-Sep-2026</td>
+              <td>General</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Sample Devotee 3</td>
+              <td class="amount">₹ 1,116</td>
+              <td>14-Sep-2026</td>
+              <td>Annadanam</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Sample Devotee 4</td>
+              <td class="amount">₹ 501</td>
+              <td>15-Sep-2026</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Sample Devotee 5</td>
+              <td class="amount">₹ 11,116</td>
+              <td>16-Sep-2026</td>
+              <td>Special Homam</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2">Total Collected (Sample)</td>
+              <td class="amount">₹ 20,235</td>
+              <td colspan="2">Update this with real data</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align:center; margin-top:20px; color:#ffd9a0; font-size:0.9rem;">
+        * Replace sample names & amounts with actual Chandas data. You can edit this HTML file anytime.
+      </p>
+    </section>
+
+    <!-- EXPENSES -->
+    <section id="expenses">
+      <h2 class="section-title">Expenses List</h2>
+      <p class="section-desc">Complete transparency of all expenses incurred for the Mahotsavam.</p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Particulars</th>
+              <th>Amount (₹)</th>
+              <th>Date</th>
+              <th>Paid To</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ganesha Idol & Decoration</td>
+              <td class="amount">₹ 8,500</td>
+              <td>10-Sep-2026</td>
+              <td>Local Artisan</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Flowers & Puja Materials</td>
+              <td class="amount">₹ 4,200</td>
+              <td>11-Sep-2026</td>
+              <td>Market</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Sound System & Lighting</td>
+              <td class="amount">₹ 6,000</td>
+              <td>12-Sep-2026</td>
+              <td>Vendor</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Annadanam Provisions</td>
+              <td class="amount">₹ 12,000</td>
+              <td>Various</td>
+              <td>Grocery</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Cultural Programme</td>
+              <td class="amount">₹ 3,500</td>
+              <td>15-Sep-2026</td>
+              <td>—</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2">Total Expenses (Sample)</td>
+              <td class="amount">₹ 34,200</td>
+              <td colspan="2">Update with actual figures</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2 class="section-title">Photo Gallery</h2>
+      <p class="section-desc">
+        Beautiful moments from the Mahotsavam. Hover on any photo and click Download. 
+        You can also scan the QR code to open this gallery on your phone.
+      </p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="placeholder-img">🐘</div>
+          <button class="download-btn" onclick="alert('Replace with real photo URL and download link')">Download</button>
+        </div>
+        <div class="gallery-item">
+          <div class="placeholder-img">🪔</div>
+          <button class="download-btn" onclick="alert('Replace with real photo URL and download link')">Download</button>
+        </div>
+        <div class="gallery-item">
+          <div class="placeholder-img">🙏</div>
+          <button class="download-btn" onclick="alert('Replace with real photo URL and download link')">Download</button>
+        </div>
+        <div class="gallery-item">
+          <div class="placeholder-img">🎶</div>
+          <button class="download-btn" onclick="alert('Replace with real photo URL and download link')">Download</button>
+        </div>
+        <div class="gallery-item">
+          <div class="placeholder-img">🌸</div>
+          <button class="download-btn" onclick="alert('Replace with real photo URL and download link')">Download</button>
+        </div>
+        <div class="gallery-item">
+          <div class="placeholder-img">📸</div>
+          <button class="download-btn" onclick="alert('Replace with real photo URL and download link')">Download</button>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:25px; color:#ffd9a0; font-size:0.9rem;">
+        Tip: Upload real photos to Google Drive / Imgur and replace the placeholder images + download links.
+      </p>
+    </section>
+
+    <!-- QR CODES -->
+    <section id="qr">
+      <h2 class="section-title">Scan QR Codes</h2>
+      <p class="section-desc">
+        Scan these QR codes with your phone camera to quickly open Donations list, Expenses or Photo Gallery.
+        After hosting the website, these QR codes will point to the live pages.
+      </p>
+
+      <div class="qr-grid">
+        <div class="qr-card">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://srimahavigneshyouthvtp.com/%23chandas&bgcolor=ffffff&color=8B0000" alt="QR Chandas">
+          <h4>Chandas / Donations</h4>
+          <p>View complete donor list</p>
+        </div>
+        <div class="qr-card">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://srimahavigneshyouthvtp.com/%23gallery&bgcolor=ffffff&color=8B0000" alt="QR Gallery">
+          <h4>Photo Gallery</h4>
+          <p>Download festival photos</p>
+        </div>
+        <div class="qr-card">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://srimahavigneshyouthvtp.com/%23expenses&bgcolor=ffffff&color=8B0000" alt="QR Expenses">
+          <h4>Expenses List</h4>
+          <p>Full transparency report</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-desc">For any queries, donations coordination or volunteering, please reach out to us.</p>
+
+      <div class="contact-grid">
+        <div class="card contact-card">
+          <div style="font-size:2.5rem; margin-bottom:10px;">📞</div>
+          <h3 style="color:var(--saffron); margin-bottom:15px;">Phone Numbers</h3>
+          <p class="phone"><a href="tel:+916304454578">+91 63044 54578</a></p>
+          <p class="phone"><a href="tel:+919392579311">+91 93925 79311</a></p>
+          <p class="phone"><a href="tel:+919642812248">+91 96428 12248</a></p>
+        </div>
+        <div class="card contact-card">
+          <div style="font-size:2.5rem; margin-bottom:10px;">🏛️</div>
+          <h3 style="color:var(--saffron); margin-bottom:15px;">Organisation</h3>
+          <p style="color:#ffd9a0; line-height:1.7;">
+            <strong style="color:var(--gold);">SriMahavignesh Youth Association</strong><br>
+            Vinayaka Chavithi & Navaratri<br>
+            Mahotsavam Karyakram
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p class="org">SriMahavignesh Youth Association</p>
+    <p>© 2026 All Rights Reserved | Made with 🙏 devotion</p>
+    <p style="margin-top:8px; font-size:0.8rem;">Domain: srimahavigneshyouthvtp.com</p>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    function setActive(el) {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      el.classList.add('active');
+      if (window.innerWidth <= 900) {
+        document.getElementById('sidebar').classList.remove('open');
+      }
+    }
+
+    function toggleDropdown(e, id) {
+      e.preventDefault();
+      const drop = document.getElementById(id);
+      drop.classList.toggle('open');
+      setActive(e.currentTarget);
+    }
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(e) {
+      const sidebar = document.getElementById('sidebar');
+      const toggle = document.querySelector('.menu-toggle');
+      if (window.innerWidth <= 900 && sidebar.classList.contains('open')) {
+        if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
+          sidebar.classList.remove('open');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
