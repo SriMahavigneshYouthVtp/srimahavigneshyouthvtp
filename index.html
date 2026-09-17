@@ -42,6 +42,7 @@
       mask-image: linear-gradient(to bottom, #000, transparent 78%);
     }
     a { color: inherit; }
+    img { max-width: 100%; display: block; }
     .layout { display: flex; min-height: 100vh; }
 
     .sidebar {
@@ -67,7 +68,7 @@
     section { min-height: 88vh; padding: 100px clamp(24px, 7vw, 100px); scroll-margin-top: 20px; }
     .hero { min-height: 100vh; display: grid; place-items: center; text-align: center; padding-top: 70px; position: relative; overflow: hidden; }
     .hero::before { content: ""; position: absolute; width: 560px; height: 560px; border-radius: 50%; background: #e8781b1b; filter: blur(8px); }
-    .hero-content { position: relative; max-width: 850px; }
+    .hero-content { position: relative; max-width: 980px; }
     .eyebrow { color: var(--orange); text-transform: uppercase; letter-spacing: .25em; font-size: .75rem; font-weight: 800; }
     .hero h1 { color: var(--gold); font: 700 clamp(2.4rem, 6vw, 5.6rem)/1.05 Cinzel, serif; margin: 18px 0; text-shadow: 0 8px 34px #000; }
     .hero h1 span { color: var(--cream); }
@@ -108,14 +109,23 @@
     .total td { color: var(--gold); font-weight: 800; background: #ff9d3518; }
 
     .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 1120px; margin: auto; }
-    .gallery-item { min-height: 190px; position: relative; overflow: hidden; border-radius: 18px; border: 1px solid var(--line); background: linear-gradient(145deg, #8f4018, #2a1209); display: grid; place-items: center; font-size: 3.2rem; transition: .3s; }
+    .gallery-item { position: relative; min-height: 190px; overflow: hidden; border-radius: 18px; border: 1px solid var(--line); background: #2c1710; transition: .3s; }
     .gallery-item:nth-child(2), .gallery-item:nth-child(5) { min-height: 240px; }
     .gallery-item:hover { transform: scale(1.025); border-color: var(--gold); box-shadow: 0 18px 40px #0008; }
-    .gallery-item small { position: absolute; bottom: 12px; left: 14px; color: var(--cream); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-item .label { position: absolute; left: 14px; right: 14px; bottom: 12px; padding: 7px 10px; border-radius: 10px; background: rgba(8, 6, 4, .48); backdrop-filter: blur(8px); color: var(--cream); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; }
 
     .live-row { display: flex; justify-content: center; margin: -18px auto 30px; }
     .live-btn { padding: 9px 15px; font-size: .78rem; background: #a82727; color: white; }
     .live-btn::before { content: ""; width: 8px; height: 8px; background: #ffb3b3; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 0 4px #ffffff20; }
+
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 1100px; margin: auto; }
+    .video-card { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #1d0f0b; box-shadow: var(--shadow); }
+    .video-card iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; }
+    .video-card .info { padding: 16px 18px 18px; }
+    .video-card h3 { color: var(--gold); font-size: 1rem; margin-bottom: 4px; }
+    .video-card p { color: var(--muted); font-size: .85rem; }
+
     .qr-grid, .contact-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); max-width: 900px; }
     .qr-card { text-align: center; background: #fff; color: #5d230b; border-radius: 18px; padding: 22px; }
     .qr-card img { width: 140px; height: 140px; display: block; margin: auto auto 12px; }
@@ -157,6 +167,7 @@
       <a href="#chandas"><span>₹</span>Chandas</a>
       <a href="#expenses"><span>▤</span>Expenses</a>
       <a href="#gallery"><span>▦</span>Gallery</a>
+      <a href="#videos"><span>▶</span>Videos</a>
       <a href="#live"><span>●</span>Live</a>
       <a href="#qr"><span>⌁</span>QR Codes</a>
       <a href="#contact"><span>☎</span>Contact</a>
@@ -219,9 +230,25 @@
     </section>
 
     <section id="gallery">
-      <div class="section-head"><h2>Photo Gallery <span>ఫోటో గ్యాలరీ</span></h2><p>Our gallery is ready for your Utsavam memories. Replace these placeholders with your photos.</p></div>
+      <div class="section-head"><h2>Photo Gallery <span>ఫోటో గ్యాలరీ</span></h2><p>Memories from the Utsavam, ready to be replaced with your real festival photos.</p></div>
       <div class="gallery-grid">
-        <div class="gallery-item">🐘<small>Ganesh Darshan</small></div><div class="gallery-item">🪔<small>Deepa Seva</small></div><div class="gallery-item">🙏<small>Bhakti</small></div><div class="gallery-item">🌼<small>Alankaram</small></div><div class="gallery-item">🎶<small>Bhajans</small></div><div class="gallery-item">🍚<small>Annadanam</small></div><div class="gallery-item">📸<small>Celebration</small></div><div class="gallery-item">✨<small>Memories</small></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80" alt="Temple Festival" /><div class="label">Temple</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80" alt="Pooja decoration" /><div class="label">Pooja</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80" alt="Prayer and lights" /><div class="label">Prayer</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80" alt="Cultural performance" /><div class="label">Culture</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Decorated stage" /><div class="label">Event</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517783997698-7a5eb4c24438?auto=format&fit=crop&w=900&q=80" alt="Flowers and offerings" /><div class="label">Offering</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Festival crowd" /><div class="label">Crowd</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80" alt="Temple atmosphere" /><div class="label">Atmosphere</div></div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="section-head"><h2>Festival Videos <span>వీడియోలు</span></h2><p>Watch a few devotional highlights and sample festival moments.</p></div>
+      <div class="video-grid">
+        <article class="video-card"><iframe src="https://www.youtube.com/embed/9dfScR2Zn-Q" title="Ganesh Bhajans" allowfullscreen loading="lazy"></iframe><div class="info"><h3>Ganesh Bhajans</h3><p>Devotional songs and energy-filled celebration.</p></div></article>
+        <article class="video-card"><iframe src="https://www.youtube.com/embed/NAPC9aPXD3w" title="Aarti" allowfullscreen loading="lazy"></iframe><div class="info"><h3>Ganesh Aarti</h3><p>A sacred and uplifting devotional moment.</p></div></article>
+        <article class="video-card"><iframe src="https://www.youtube.com/embed/7_yskozUpzQ" title="Visarjan" allowfullscreen loading="lazy"></iframe><div class="info"><h3>Visarjan Highlights</h3><p>The final prayers and festive farewell.</p></div></article>
       </div>
     </section>
 
