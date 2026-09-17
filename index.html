@@ -208,6 +208,9 @@
       filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
       animation: float 4s ease-in-out infinite;
       margin-bottom: 20px;
+      display: block;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
     }
 
     @keyframes float {
@@ -554,6 +557,54 @@
       text-decoration: underline;
     }
 
+    .temple-img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 12px;
+      margin-top: 20px;
+      border: 2px solid var(--gold);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    /* Videos */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .video-card {
+      background: rgba(40, 15, 0, 0.9);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .video-card iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: block;
+      border: none;
+    }
+
+    .video-card .video-info {
+      padding: 16px 20px;
+    }
+
+    .video-card h4 {
+      color: var(--gold);
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .video-card p {
+      color: #e0c9a0;
+      font-size: 0.9rem;
+    }
+
     /* Footer */
     footer {
       background: #0d0500;
@@ -616,42 +667,49 @@
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <h2>SriMahavignesh<br>Youth Association</h2>
+      <p style="font-size:0.8rem; margin-top:4px; color:var(--gold);">శ్రీ మహావిఘ్నేశ్ యూత్ అసోసియేషన్</p>
       <p>Vinayaka Chavithi & Navaratri<br>Mahotsavam Karyakram</p>
+      <p style="font-size:0.72rem; opacity:0.9;">వినాయక చవితి & నవరాత్రి మహోత్సవం</p>
     </div>
     <nav class="nav-menu">
       <div class="nav-item">
         <a class="nav-link active" href="#home" onclick="setActive(this)">
-          <span class="icon">🏠</span> Home
+          <span class="icon">🏠</span> Home / హోమ్
         </a>
       </div>
       <div class="nav-item">
         <a class="nav-link" href="#about" onclick="setActive(this)">
-          <span class="icon">🙏</span> About Us
+          <span class="icon">🙏</span> About / ��ురించి
         </a>
       </div>
       <div class="nav-item">
         <a class="nav-link" href="#schedule" onclick="toggleDropdown(event, 'schedule-drop')">
-          <span class="icon">📅</span> Day-by-Day Activities ▾
+          <span class="icon">📅</span> Activities / కార్యక్రమాలు ▾
         </a>
         <div class="dropdown" id="schedule-drop">
-          <a href="#schedule">Full Schedule</a>
-          <a href="#schedule">Puja Timings</a>
-          <a href="#schedule">Special Events</a>
+          <a href="#schedule">Full Schedule / పూర్తి షెడ్యూల్</a>
+          <a href="#schedule">Puja Timings / పూజా సమయాలు</a>
+          <a href="#schedule">Special Events / ప్రత్యేక కార్యక్రమాలు</a>
         </div>
       </div>
       <div class="nav-item">
         <a class="nav-link" href="#chandas" onclick="setActive(this)">
-          <span class="icon">💰</span> Chandas (Donations)
+          <span class="icon">💰</span> Chandas / చందాలు
         </a>
       </div>
       <div class="nav-item">
         <a class="nav-link" href="#expenses" onclick="setActive(this)">
-          <span class="icon">📋</span> Expenses List
+          <span class="icon">📋</span> Expenses / ఖర్చులు
         </a>
       </div>
       <div class="nav-item">
         <a class="nav-link" href="#gallery" onclick="setActive(this)">
-          <span class="icon">📸</span> Photo Gallery
+          <span class="icon">📸</span> Gallery / గ్యాలరీ
+        </a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#videos" onclick="setActive(this)">
+          <span class="icon">🎬</span> Videos / వీడియోలు
         </a>
       </div>
       <div class="nav-item">
@@ -661,7 +719,7 @@
       </div>
       <div class="nav-item">
         <a class="nav-link" href="#contact" onclick="setActive(this)">
-          <span class="icon">📞</span> Contact
+          <span class="icon">📞</span> Contact / సంప్రదించండి
         </a>
       </div>
     </nav>
@@ -673,23 +731,52 @@
     <!-- HOME / HERO -->
     <section class="hero" id="home">
       <div class="om">ॐ</div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Lord_Ganesha.png/500px-Lord_Ganesha.png" 
-           alt="Lord Ganesha" class="ganesha-img" 
-           onerror="this.src='https://images.unsplash.com/photo-1567591414240-e9e1de5a6289?w=400&q=80'; this.style.borderRadius='50%';">
+      <svg class="ganesha-img" viewBox="0 0 200 200" role="img" aria-label="Lord Ganesha" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ganeshaBody" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f9d976"/>
+            <stop offset="50%" stop-color="#f4b942"/>
+            <stop offset="100%" stop-color="#d9821f"/>
+          </linearGradient>
+        </defs>
+        <circle cx="100" cy="100" r="92" fill="rgba(255,255,255,0.08)" stroke="#ffd700" stroke-width="4"/>
+        <path d="M100 35 C92 35, 75 42, 68 58 C57 82, 55 116, 65 130 C72 140, 81 146, 88 146 C96 146, 100 140, 100 132 L100 63 C100 48, 105 42, 116 42 C126 42, 137 48, 144 58 C153 71, 159 91, 155 106 C149 130, 123 151, 98 155 C86 157, 74 154, 64 147 C49 136, 41 117, 43 95 C45 69, 58 52, 73 44 C81 40, 88 38, 100 35Z" fill="url(#ganeshaBody)"/>
+        <path d="M80 115 C72 102, 69 90, 71 75 C73 59, 82 46, 98 44 C113 42, 125 48, 131 64 C134 73, 135 81, 132 91 C126 112, 110 123, 93 124 C88 124, 83 121, 80 115Z" fill="#ea8f1b" opacity="0.95"/>
+        <path d="M92 35 C86 28, 90 18, 100 14 C111 10, 122 16, 123 28 C124 40, 116 48, 106 49 C101 49, 96 45, 92 35Z" fill="#f2c75c"/>
+        <ellipse cx="92" cy="87" rx="8" ry="12" fill="#1f1208"/>
+        <ellipse cx="117" cy="87" rx="8" ry="12" fill="#1f1208"/>
+        <circle cx="89" cy="82" r="2" fill="#fff"/>
+        <circle cx="114" cy="82" r="2" fill="#fff"/>
+        <path d="M90 111 C94 118, 106 118, 110 111" fill="none" stroke="#6d2f00" stroke-width="4" stroke-linecap="round"/>
+        <path d="M80 92 C86 103, 90 115, 100 119 C111 115, 116 104, 120 92" fill="none" stroke="#8a4500" stroke-width="5" stroke-linecap="round"/>
+        <path d="M100 66 L111 79 C118 85, 123 87, 130 88" fill="none" stroke="#d38a22" stroke-width="4" stroke-linecap="round"/>
+        <path d="M128 86 C136 80, 146 81, 150 90 C154 98, 153 109, 146 119 C141 124, 135 128, 127 131" fill="none" stroke="#d38a22" stroke-width="4" stroke-linecap="round"/>
+        <path d="M158 88 C162 103, 160 117, 149 130" fill="none" stroke="#d38a22" stroke-width="4" stroke-linecap="round"/>
+        <path d="M101 146 C90 152, 82 160, 81 170 C79 182, 88 190, 100 190 C113 190, 122 182, 119 170 C117 160, 110 152, 101 146Z" fill="#f2c75c"/>
+        <path d="M101 145 C103 160, 100 174, 90 183" fill="none" stroke="#8a4500" stroke-width="4" stroke-linecap="round"/>
+        <path d="M101 145 C99 160, 101 174, 111 183" fill="none" stroke="#8a4500" stroke-width="4" stroke-linecap="round"/>
+        <path d="M88 152 C94 157, 100 159, 106 152" fill="none" stroke="#7a3400" stroke-width="4" stroke-linecap="round"/>
+        <path d="M66 126 C58 122, 51 120, 42 123 C34 126, 30 133, 31 141 C32 153, 43 157, 53 153 C58 151, 62 147, 66 140" fill="none" stroke="#d38a22" stroke-width="4" stroke-linecap="round"/>
+        <path d="M142 129 C151 127, 159 128, 167 133 C176 139, 181 149, 180 158 C179 171, 166 180, 154 176 C147 173, 141 166, 138 158" fill="none" stroke="#d38a22" stroke-width="4" stroke-linecap="round"/>
+      </svg>
       <h1>SriMahavignesh Youth Association</h1>
+      <p style="color:var(--gold); font-size:1.15rem; margin:6px 0;">శ్రీ మహావిఘ్నేశ్ యూత్ అసోసియేషన్</p>
       <p class="subtitle">Vinayaka Chavithi & Navaratri Mahotsavam Karyakram</p>
+      <p style="color:var(--saffron); font-size:1rem;">వినాయక చవితి & నవరాత్రి మహోత్సవం కార్యక్రమం</p>
       <p class="tagline">
         With the divine blessings of Lord Ganesha, we welcome you to our sacred celebrations. 
-        Join us in devotion, seva and community service.
+        Join us in devotion, seva and community service.<br>
+        <span style="font-size:0.95rem; color:#ffd9a0;">శ్రీ గణేశుని దివ్య ఆశీస్సులతో మిమ్మల్ని స్వాగతిస్తున్నాము. భక్తి, సేవ మరియు సమాజ సేవలో పాల్గొనండి.</span>
       </p>
       <p style="color: var(--gold); font-size: 1.1rem; margin-top: 10px;">
-        🪔 May Lord Vighnaharta remove all obstacles 🪔
+        🪔 May Lord Vighnaharta remove all obstacles 🪔<br>
+        <span style="font-size:0.95rem;">శ్రీ విఘ్నహర్త అన్ని అడ్డంకులను తొలగించుగాక</span>
       </p>
     </section>
 
     <!-- ABOUT -->
     <section id="about">
-      <h2 class="section-title">About the Mahotsavam</h2>
+      <h2 class="section-title">About the Mahotsavam<br><span style="font-size:1.3rem; color:var(--saffron);">మహోత్సవం గురించి</span></h2>
       <p class="section-desc">
         SriMahavignesh Youth Association organises the annual Vinayaka Chavithi and Navaratri Mahotsavam 
         with pure devotion. This platform maintains transparency of Chandas (collected funds), expenses 
@@ -721,7 +808,7 @@
 
     <!-- SCHEDULE -->
     <section id="schedule">
-      <h2 class="section-title">Day-by-Day Activities</h2>
+      <h2 class="section-title">Day-by-Day Activities<br><span style="font-size:1.3rem; color:var(--saffron);">రోజువారీ కార్యక్రమాలు</span></h2>
       <p class="section-desc">Complete schedule of Vinayaka Chavithi & Navaratri celebrations. Timings may vary slightly – please check with organisers.</p>
       
       <div class="timeline">
@@ -762,7 +849,7 @@
 
     <!-- CHANDAS / DONATIONS -->
     <section id="chandas">
-      <h2 class="section-title">Chandas – Donations List</h2>
+      <h2 class="section-title">Chandas – Donations List<br><span style="font-size:1.3rem; color:var(--saffron);">చందాలు – విరాళాల జాబితా</span></h2>
       <p class="section-desc">
         Heartfelt gratitude to all devotees who contributed. This list is updated regularly. 
         Scan the QR code below to view the latest list anytime.
@@ -773,64 +860,55 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Devotee Name</th>
-              <th>Amount (₹)</th>
-              <th>Date</th>
-              <th>Remarks</th>
+              <th>పేరు / Name</th>
+              <th>విరాళం / Amount (₹)</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Sample Devotee 1</td>
-              <td class="amount">₹ 5,001</td>
-              <td>12-Sep-2026</td>
-              <td>Ganesh Alankaram</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Sample Devotee 2</td>
-              <td class="amount">₹ 2,501</td>
-              <td>13-Sep-2026</td>
-              <td>General</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Sample Devotee 3</td>
-              <td class="amount">₹ 1,116</td>
-              <td>14-Sep-2026</td>
-              <td>Annadanam</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Sample Devotee 4</td>
-              <td class="amount">₹ 501</td>
-              <td>15-Sep-2026</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Sample Devotee 5</td>
-              <td class="amount">₹ 11,116</td>
-              <td>16-Sep-2026</td>
-              <td>Special Homam</td>
-            </tr>
+            <tr><td>1</td><td>శేషపు రమేష్</td><td class="amount">₹ 2,000</td></tr>
+            <tr><td>2</td><td>వాళ్తేటి కార్తీక్</td><td class="amount">₹ 500</td></tr>
+            <tr><td>3</td><td>రెడ్డి సాయి</td><td class="amount">₹ 700</td></tr>
+            <tr><td>4</td><td>రెడ్డి గోవింద (S/o అప్పలనాయుడు)</td><td class="amount">₹ 200</td></tr>
+            <tr><td>5</td><td>పాతర్లపల్లి హరీష్</td><td class="amount">₹ 500</td></tr>
+            <tr><td>6</td><td>మండల అచ్యుత్</td><td class="amount">₹ 1,000</td></tr>
+            <tr><td>7</td><td>రెడ్డి భూషణ్</td><td class="amount">₹ 1,000</td></tr>
+            <tr><td>8</td><td>సౌరెడ్డి అప్పన్న (మోహన్)</td><td class="amount">₹ 1,000</td></tr>
+            <tr><td>9</td><td>పాతర్లపల్లి సత్యం (నూకరావ్)</td><td class="amount">₹ 1,000</td></tr>
+            <tr><td>10</td><td>టెక్కలి చంటి (గంగమ్మ)</td><td class="amount">₹ 1,000</td></tr>
+            <tr><td>11</td><td>సోడవరపు విజయ్ (ఝాన్సీ)</td><td class="amount">₹ 1,000</td></tr>
+            <tr><td>12</td><td>పెందుర్తి కళ్యాణ్</td><td class="amount">₹ 1,000</td></tr>
+            <tr><td>13</td><td>రెడ్డి సత్యంనాయుడు (కార్తీక్)</td><td class="amount">₹ 1,016</td></tr>
+            <tr><td>14</td><td>పిన్నింటి మణి</td><td class="amount">₹ 500</td></tr>
+            <tr><td>15</td><td>జగదీష్</td><td class="amount">₹ 500</td></tr>
+            <tr><td>16</td><td>బెవర ఉపేంద్ర</td><td class="amount">₹ 500</td></tr>
+            <tr><td>17</td><td>పాతర్లపల్లి అచ్యుత్</td><td class="amount">₹ 500</td></tr>
+            <tr><td>18</td><td>చల్లా కృష్ణ (శ్రీదేవి)</td><td class="amount">₹ 500</td></tr>
+            <tr><td>19</td><td>గేదెల వెంకటరమణ</td><td class="amount">₹ 500</td></tr>
+            <tr><td>20</td><td>గేదెల శ్రీనివాస్</td><td class="amount">₹ 500</td></tr>
+            <tr><td>21</td><td>అస్కర నూకన్నదొర (గణపతి)</td><td class="amount">₹ 4,500</td></tr>
+            <tr><td>22</td><td>గేదెల నారాయణమ్మ (శ్రావణి)</td><td class="amount">₹ 5,000</td></tr>
+            <tr><td>23</td><td>మామిడి లక్ష్మి (సురేష్)</td><td class="amount">₹ 7,000</td></tr>
+            <tr><td>24</td><td>మండల సీతంనాయుడు (మణికంఠ)</td><td class="amount">₹ 7,000</td></tr>
+            <tr><td>25</td><td>బెవర రామకృష్ణ (గోవింద)</td><td class="amount">₹ 7,000</td></tr>
+            <tr><td>26</td><td>తోకల నాగందొర (కళ్యాణి)</td><td class="amount">₹ 500</td></tr>
+            <tr><td>27</td><td>నడిమింటి గణేష్</td><td class="amount">₹ 200</td></tr>
+            <tr><td>28</td><td>మణిపురి సంధ్య</td><td class="amount">₹ 500</td></tr>
+            <tr><td>29</td><td>రెడ్డి జగదీష్</td><td class="amount">₹ 2,000</td></tr>
             <tr class="total-row">
-              <td colspan="2">Total Collected (Sample)</td>
-              <td class="amount">₹ 20,235</td>
-              <td colspan="2">Update this with real data</td>
+              <td colspan="2"><strong>మొత్తం / Total Collected</strong></td>
+              <td class="amount"><strong>₹ 49,116</strong></td>
             </tr>
           </tbody>
         </table>
       </div>
       <p style="text-align:center; margin-top:20px; color:#ffd9a0; font-size:0.9rem;">
-        * Replace sample names & amounts with actual Chandas data. You can edit this HTML file anytime.
+        అందరు భక్తులకు హృదయపూర్వక ధన్యవాదాలు | Heartfelt thanks to all devotees
       </p>
     </section>
 
     <!-- EXPENSES -->
     <section id="expenses">
-      <h2 class="section-title">Expenses List</h2>
+      <h2 class="section-title">Expenses List<br><span style="font-size:1.3rem; color:var(--saffron);">ఖర్చుల జాబితా</span></h2>
       <p class="section-desc">Complete transparency of all expenses incurred for the Mahotsavam.</p>
 
       <div class="table-wrapper">
@@ -892,7 +970,7 @@
 
     <!-- GALLERY -->
     <section id="gallery">
-      <h2 class="section-title">Photo Gallery</h2>
+      <h2 class="section-title">Photo Gallery<br><span style="font-size:1.3rem; color:var(--saffron);">ఫోటో గ్యాలరీ</span></h2>
       <p class="section-desc">
         Beautiful moments from the Mahotsavam. Hover on any photo and click Download. 
         You can also scan the QR code to open this gallery on your phone.
@@ -929,9 +1007,53 @@
       </p>
     </section>
 
+    <!-- VIDEOS -->
+    <section id="videos">
+      <h2 class="section-title">Festival Videos<br><span style="font-size:1.3rem; color:var(--saffron);">మహోత్సవ వీడియోలు</span></h2>
+      <p class="section-desc">
+        Watch the divine moments of Vinayaka Chavithi & Navaratri Mahotsavam. 
+        Replace these sample videos with your own YouTube links anytime.
+      </p>
+
+      <div style="text-align:center; margin-bottom:40px;">
+        <a href="#videos" onclick="alert('Replace this link with your YouTube Live / Facebook Live URL when you start streaming')" 
+           style="display:inline-flex; align-items:center; gap:12px; background:linear-gradient(90deg,#c62828,#e53935); color:white; padding:16px 32px; border-radius:50px; font-weight:600; font-size:1.1rem; text-decoration:none; box-shadow:0 6px 20px rgba(198,40,40,0.5);">
+          <span style="font-size:1.4rem;">🔴</span> LIVE STREAMING – Click here during Puja
+        </a>
+        <p style="margin-top:12px; color:#ffd9a0; font-size:0.9rem;">Update the link above with your actual YouTube Live URL</p>
+      </div>
+
+      <div class="video-grid">
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/9dfScR2Zn-Q" title="Ganesh Bhajans Collection" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info">
+            <h4>Shree Ganesh Bhajans & Aarti</h4>
+            <p>Beautiful collection of Ganesh mantras, aarti and bhajans</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/NAPC9aPXD3w" title="Jai Ganesh Deva Aarti" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info">
+            <h4>Jai Ganesh Jai Ganesh Deva</h4>
+            <p>Divine cinematic Ganesh Aarti – perfect for daily puja</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/7_yskozUpzQ" title="Ganesh Visarjan Aarti" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info">
+            <h4>Ganesh Visarjan Special</h4>
+            <p>Emotional visarjan moments with traditional aarti</p>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:25px; color:#ffd9a0; font-size:0.9rem;">
+        Tip: Upload your own festival videos to YouTube → Share → Embed → replace the iframe codes above.
+      </p>
+    </section>
+
     <!-- QR CODES -->
     <section id="qr">
-      <h2 class="section-title">Scan QR Codes</h2>
+      <h2 class="section-title">Scan QR Codes<br><span style="font-size:1.3rem; color:var(--saffron);">QR కోడ్‌లు స్కాన్ చేయండి</span></h2>
       <p class="section-desc">
         Scan these QR codes with your phone camera to quickly open Donations list, Expenses or Photo Gallery.
         After hosting the website, these QR codes will point to the live pages.
@@ -958,25 +1080,30 @@
 
     <!-- CONTACT -->
     <section id="contact">
-      <h2 class="section-title">Contact Us</h2>
+      <h2 class="section-title">Contact Us<br><span style="font-size:1.3rem; color:var(--saffron);">మమ్మల్ని సంప్రదించండి</span></h2>
       <p class="section-desc">For any queries, donations coordination or volunteering, please reach out to us.</p>
 
       <div class="contact-grid">
         <div class="card contact-card">
           <div style="font-size:2.5rem; margin-bottom:10px;">📞</div>
-          <h3 style="color:var(--saffron); margin-bottom:15px;">Phone Numbers</h3>
+          <h3 style="color:var(--saffron); margin-bottom:15px;">Phone Numbers / ఫోన్ నంబర్లు</h3>
           <p class="phone"><a href="tel:+916304454578">+91 63044 54578</a></p>
           <p class="phone"><a href="tel:+919392579311">+91 93925 79311</a></p>
           <p class="phone"><a href="tel:+919642812248">+91 96428 12248</a></p>
         </div>
         <div class="card contact-card">
-          <div style="font-size:2.5rem; margin-bottom:10px;">🏛️</div>
-          <h3 style="color:var(--saffron); margin-bottom:15px;">Organisation</h3>
+          <div style="font-size:2.5rem; margin-bottom:10px;">🛕</div>
+          <h3 style="color:var(--saffron); margin-bottom:15px;">Organisation / సంస్థ</h3>
           <p style="color:#ffd9a0; line-height:1.7;">
             <strong style="color:var(--gold);">SriMahavignesh Youth Association</strong><br>
-            Vinayaka Chavithi & Navaratri<br>
-            Mahotsavam Karyakram
+            <span style="color:var(--gold);">శ్రీ మహావిఘ్నేశ్ యూత్ అసోసియేషన్</span><br>
+            Vinayaka Chavithi & Navaratri Mahotsavam<br>
+            వినాయక చవితి & నవరాత్రి మహోత్సవం
           </p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Gopuram_of_the_Meenakshi_Temple_at_Madurai.jpg/700px-Gopuram_of_the_Meenakshi_Temple_at_Madurai.jpg" 
+               alt="South Indian Temple Gopuram" class="temple-img"
+               onerror="this.src='https://images.unsplash.com/photo-1548013146-72479768bada?w=700&q=80';">
+          <p style="margin-top:12px; font-size:0.85rem; color:#c9a06a;">Sacred South Indian Temple blessings</p>
         </div>
       </div>
     </section>
@@ -985,6 +1112,7 @@
 
   <footer>
     <p class="org">SriMahavignesh Youth Association</p>
+    <p style="color:var(--gold); font-size:1rem;">శ్రీ మహావిఘ్నేశ్ యూత్ అసోసియేషన్</p>
     <p>© 2026 All Rights Reserved | Made with 🙏 devotion</p>
     <p style="margin-top:8px; font-size:0.8rem;">Domain: srimahavigneshyouthvtp.com</p>
   </footer>
@@ -1009,7 +1137,6 @@
       setActive(e.currentTarget);
     }
 
-    // Close sidebar when clicking outside on mobile
     document.addEventListener('click', function(e) {
       const sidebar = document.getElementById('sidebar');
       const toggle = document.querySelector('.menu-toggle');
